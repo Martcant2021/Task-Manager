@@ -1,7 +1,8 @@
-from app import app
+import app
 import os
 
-IS_DEV = app.env == 'Entorno'
+from flask import Flask
+
 
 if __name__=='__main__':
     os.environ['FLASK_ENV'] = 'Entorno'
