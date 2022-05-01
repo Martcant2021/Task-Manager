@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/grids-responsive-min.css">
+    <title>Task Martinger</title>
+</head>
+<body>
+    <section>
+        <div>
+            <h1>
+                Welcome to <p>Task Martinger</p>
+            </h1>
+        </div>
+    </section>
+    <section>
+        
+        <p class=""> Task </p>
+        <form action="/create" method="post">
+            <p>
+                <label for="">Title</label>
+                <input type="text" name="title" required>
+                <label for="">description</label>
+                <input type="text" name="description" required>
+            <input type="submit" value="Add task"></p>
+        </form>
+
+
+
+        <ol>
+            {% for task in Tasks %}
+                <li>
+                    {% if task.status %} <strike> {% endif %}{{ task.title }}{{ task.description }} {% if task.status %} </strike>{% endif %}
+                    <a href="/complete/{{ task.id }}">Done</a>
+                    <a href="/delete/{{ task.id }}">Delete</a>
+                </li>
+            {% endfor %}
+        </ol>
+    </section>
+
+</body>
+</html>
