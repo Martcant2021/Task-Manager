@@ -9,7 +9,7 @@ class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True )
     title = db.Column(db.String)
     description = db.Column(db.Text)
-    status = db.Column(db.Boolean,default=False, nullable = False)
+    status = db.Column(db.Boolean, default=False, nullable = False)
 
 
     def __init__(self,title, description ):

@@ -10,6 +10,8 @@
     <title>Task Martinger</title>
 </head>
 <body>
+
+
     <section>
         <div>
             <h1>
@@ -17,29 +19,61 @@
             </h1>
         </div>
     </section>
-    <section>
-        
-        <p class=""> Task </p>
-        <form action="/create" method="post">
-            <p>
-                <label for="">Title</label>
-                <input type="text" name="title" required>
-                <label for="">description</label>
-                <input type="text" name="description" required>
-            <input type="submit" value="Add task"></p>
-        </form>
 
-
-
-        <ol>
+    <section class="">
+        <table class="pure-table pure-table-horizontal">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>description</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
             {% for task in Tasks %}
-                <li>
-                    {% if task.status %} <strike> {% endif %}{{ task.title }}{{ task.description }} {% if task.status %} </strike>{% endif %}
-                    <a href="/complete/{{ task.id }}">Done</a>
-                    <a href="/delete/{{ task.id }}">Delete</a>
-                </li>
+                <tr>
+
+
+                    
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.title }}</td>
+                    <td> {{ task.description }}</td>
+
+                    {% if task.status %}
+                    <td><img src="https://img.icons8.com/emoji/20/000000/check-box-with-check-emoji.png"/></td>
+                    {% else %}
+                    <td><img src="https://img.icons8.com/emoji/20/000000/cross-mark-button-emoji.png"/></td>
+                    {% endif %}
+                    <td>
+                        <a href="/complete/{{ task.id }}">Done</a>
+                        
+                    </td>
+                    <td>
+                        <a href="/delete/{{ task.id }}">Delete</a>
+                    </td>
+
+                </tr>
+
             {% endfor %}
-        </ol>
+
+            </tbody>
+        </table>
+
+    </section>
+
+    <section>
+
+        <form class="pure-form" action="/create" method="post">
+            <label class=""> Task </labe>
+            <fieldset class="pure-group">
+                <input type="text" class="pure-input-1-2" placeholder="A title" name="title" required/>
+                <textarea class="pure-input-1-2" placeholder="Textareas work too" name="description"></textarea>
+            </fieldset>
+            <button type="submit" value="Add task" class="pure-button pure-input-1-2 pure-button-primary">Add task</button>
+        </form>
     </section>
 
 </body>

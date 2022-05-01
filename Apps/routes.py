@@ -45,3 +45,4 @@ def resolve_task(id):
 
     db.session.commit()
     return redirect('/')
+
