@@ -22,8 +22,6 @@ def create_task():
     db.session.commit()
     return redirect('/')
 
-
-
 @app.route('/delete/<int:id>')
 def remove_task(id):
     Tasks = Task.query.get(id)
