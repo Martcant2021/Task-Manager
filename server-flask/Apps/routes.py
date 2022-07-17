@@ -1,15 +1,17 @@
 from Apps import app
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request, redirect, url_for
 from Apps.config import db
 from Apps.models import Task
+from Apps.task_serializer import task_serializer
 
 
 
-@app.route("/")
+@app.route("/task", methods=["GET"])
 def home():
     # Task_id = db.query(Task).filter(Task.id == Task_id).first()
     Tasks = Task.query.all()
-    return render_template('index.html', Tasks=Tasks)
+    return jsonify([*map(task_serializer, Tasks)])
+    # return render_template('index.html', Tasks=Tasks)
 
 
 
