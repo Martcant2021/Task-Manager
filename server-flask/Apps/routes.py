@@ -2,7 +2,7 @@ from Apps import app
 from flask import Flask, jsonify, render_template, request, redirect, url_for
 from Apps.config import db
 from Apps.models import Task
-from Apps.task_serializer import task_serializer
+from Apps.task_serializer import task_serializer, task_response
 
 
 
@@ -15,34 +15,40 @@ def home():
 
 
 
-@app.route("/create", methods=['POST'])
+@app.route("/task/create", methods=['POST'])
 def create_task():
-    title = request.form['title']
-    description = request.form['description']
-    _task = Task(title, description)
+    # title = request.form['title']
+    # description = request.form['description']
+    # _task = Task(title, description)
+    task_data = request.get_json()
+    # task= task_data('title')
+    title = task_data.get('title')
+    _task = Task(title=title)
     db.session.add(_task)
     db.session.commit()
-    return redirect('/')
 
-@app.route('/delete/<int:id>')
+    return task_response(201,'Successfully added task',task_serializer(_task))
+
+
+
+@app.route('/task/delete/<int:id>', methods=["POST"])
 def remove_task(id):
-    Tasks = Task.query.get(id)
+    _task = Task.query.get(id)
+    if not _task:
+        return task_response(404,'task not found')
 
-    db.session.delete(Tasks)
+    db.session.delete(_task)
     db.session.commit()
-    return redirect('/')
+    return task_response(200, 'Success delete')
 
-@app.route('/complete/<int:id>')
+
+
+@app.route('/task/<int:id>', methods=["GET"])
 def resolve_task(id):
-    Tasks = Task.query.get(id)
+    _task = Task.query.filter_by(id=id).first()
 
-    if not Tasks:
-        return redirect('/')
-    if Tasks.status:
-        Tasks.status = False
-    else:
-        Tasks.status = True
+    if not _task:
+        return task_response(404,'task not found')
 
-    db.session.commit()
-    return redirect('/')
+    return jsonify(task_serializer(_task))
 

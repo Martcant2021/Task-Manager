@@ -1,10 +1,22 @@
 import React from "react";
 
-export const AddTask = ()=>{
+export const AddTask = ({inputTask, onFormTask, onFormSubmit})=>{
+
+    const  handleChange = (event) =>{
+        onFormTask(event.target.value)
+    }
+
+    const  handleSubmit = (event) =>{
+        event.preventDefault()
+        onFormSubmit()
+    }
+
+
+
     return(
         <>
-        <form action="">
-            <input type="text" required/>
+        <form onSubmit={handleSubmit}>
+            <input type="text" required value={inputTask} onChange={handleChange}/>
             <input type="submit" />
         </form>
         </>
