@@ -16,8 +16,8 @@ export const AddTask = ({inputTask, onFormTask, onFormSubmit})=>{
     return(
         <>
         <form onSubmit={handleSubmit}>
-            <input type="text" required value={inputTask} onChange={handleChange}/>
-            <input type="submit" />
+            <input type="text" required value={inputTask} onChange={handleChange} />
+            <input className="input" type="submit" />
         </form>
         </>
 

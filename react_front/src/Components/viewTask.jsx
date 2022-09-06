@@ -13,18 +13,20 @@ export const ViewTask = () =>{
                 return response.json()
             }
         }).then(data => setTask(data))
-    }, [])
+    },[])
+
 
     const handleFormTask = (inputValue) =>{
         setAddTask(inputValue)
-
     }
+
 
     const  handleFormSubmit = () =>{
         fetch(`/task/create`, {
             method: 'POST',
             body: JSON.stringify({
-                title:addTask
+                title:addTask,
+                
             }),
             headers: {
                 "Content-Type": "application/json; charset=UTF-8"
@@ -64,17 +66,26 @@ export const ViewTask = () =>{
 
     return(
         <>
-        <AddTask inputTask={addTask} onFormTask={handleFormTask} onFormSubmit={handleFormSubmit}/>
-        {task.map(task =>{
-            return(
-                <ul key = {task.id} >
-                    <li >
-                        {task.title},
-                        <button  onClick={()=> handleDeleteTask(task.id)}>Delete</button>
-                    </li>
-                </ul>
-            )
-        })}
+        <div className="App-notepad-box">
+            <div className='App-title-content'>Notes Book</div>
+                <div className="App-notepad-lines">
+
+                {task.map(task =>{
+                    return(
+                        <ul key = {task.id} className="App-task-container">
+                            <li >
+                                {task.title}
+                                <button className="App-eraser-design" onClick={()=> handleDeleteTask(task.id)}><img src="https://img.icons8.com/external-kmg-design-outline-color-kmg-design/16/000000/external-eraser-back-to-school-kmg-design-outline-color-kmg-design-2.png"/></button>
+                            </li>
+                        </ul>
+                    )
+                })}
+                </div>
+        </div>
+
+        <div className="App-input-box"> 
+            <AddTask inputTask={addTask} onFormTask={handleFormTask} onFormSubmit={handleFormSubmit}/>
+        </div>
         </>
     )
 

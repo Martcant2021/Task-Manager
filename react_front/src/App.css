@@ -1,0 +1,153 @@
+body{
+    background-color: #99D9EA;
+}
+
+*{
+    list-style-type: none;
+}
+
+.App{
+    text-align: center;
+}
+
+
+.App-title-content{
+    /*box-shadow: inset -1px -2px 9px 8px #000000; */
+    /* background-color: #ffff; */
+    border-bottom: solid 2px wheat;
+    width: 90%;
+    font-size: 23px;
+    /* text-align: center; */
+    color: wheat;
+    padding-bottom: 2px;
+    margin: auto;
+    margin-block: 1px;
+    margin-bottom: -25px;
+    font-family: "Courier New", monospace;
+    font-style: italic;
+
+}
+
+.App-notepad-box{
+    position: relative;
+    box-shadow: 6px 0px 0px 15px #9b8539, 15px 10px 15px 10px #000000, inset -3px 49px 0px -3px rgb(70, 0, 0);
+    border-radius: 5px;
+    border-width: 0px 5px 1px 0px;
+    border-style: double;
+    border-color: black;
+    background-color: #FFF5EF;
+    padding: 10px;
+    height: 26rem;
+    width: 20rem;
+    right: 6px;
+    margin: auto;
+    margin-top: 4em;
+
+}
+.App-notepad-box:before {
+    content: '';
+    position: absolute;
+    top: 13px;
+    bottom: 0;
+    left: -1px;
+    width: 45px;
+    height: 26rem;
+    background: radial-gradient(#4a6a73 4px 4px,#000000 5px 6px ,#000000 7px,#2f171700 6px) repeat-y;
+    background-size: 24px 41.66px;
+    
+}
+
+.App-notepad-box:after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    /* bottom: 21rem; */
+    right: 20.6rem;
+    height: 26rem;
+    width: 30px;
+    background-image: linear-gradient(to top, #fdfdfd00 37%, gray 35% 50%, #ffffff00 50% 56%,gray 55% 70%, #ffffff00 70%  );
+    background-size: 45px 2.6rem;
+}
+
+
+.App-notepad-lines{
+    position: absolute;
+    height: calc(100% - 40px);
+    width: 85%;
+    margin-top: 10%;
+    margin-left: 5%;
+    background: repeating-linear-gradient(transparent, transparent 28px, #000000 30px);
+    background-size: 30px 37px;
+
+}
+
+.App-task-container{
+    margin-top: 8px;
+    margin-bottom: 12px;
+    margin-left: -30px;
+    font-family: "Courier New", monospace;
+    font-style: italic;
+    text-align: left;
+}
+
+.App-input-box{
+    position: relative;
+    margin: auto;
+    margin-top: 40px; 
+
+    width: 400px;
+    height: 15px;
+    background: black;
+    border-top: 10px solid red;
+    border-bottom: 10px solid red;
+}
+
+.App-input-box:before{
+    content: '';
+    position: absolute;
+    left: -80px;
+    top: -10px;
+    border-style: solid;
+    border-color: transparent #e29663 
+    transparent transparent ;
+    border-width: 17px 40px 18px;
+}
+
+.App-input-box::after{
+    content: '';
+    position: absolute;
+    left: -80px;
+    top: -10px;
+    border-style: solid;
+    border-color: transparent #262626 transparent transparent;
+    border-width: 17px 40px 17px;
+    transform: scale(.32);
+}
+
+
+
+.input{
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -52px;
+    height: 35px;
+    width: 54px;
+    background: linear-gradient(to right, #b3b3b3 20%, #ec87c0 10% 60%, #00ffff00 30% 75%, #ffff0000 75% );
+    background-size: 100px 30px;
+    border-color: transparent;
+    /* border-radius: 50px; */
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+
+}
+
+.App-eraser-design{
+    
+    border-color: transparent;
+    background-color: transparent;
+    position: relative;
+    top: 3px;
+    cursor: pointer;
+
+}

@@ -20,8 +20,8 @@ def create_task():
     # title = request.form['title']
     # description = request.form['description']
     # _task = Task(title, description)
-    task_data = request.get_json()
     # task= task_data('title')
+    task_data = request.get_json()
     title = task_data.get('title')
     _task = Task(title=title)
     db.session.add(_task)
